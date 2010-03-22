@@ -20,16 +20,12 @@ def readfile(path):
     f.close()
     return str
 
-def render_tag_contents(tag):
+def render_tag_contents(element):
     """
-    Renders the contents inside of (but not including) an lxml tag.
+    Renders the contents inside of (but not including) an lxml element.
     Rougly equivalent to BeautifulSoup's renderContents() method.
-    TODO: Surely there is a safe lxml built-in for this...
     """
-    tagname = tag.tag
-    return re.sub('</%s>\s*$' % tagname, '',
-                  re.sub(r'^<%s(\s+\w+=".*?")*?>' % tagname,
-                         '', etree.tostring(tag))).strip()
+    return element.text + ''.join(map(etree.tostring, element))
 
 def attrs_from_mmm(mmm):
     """Returns dictionary of attributes from MMM file."""
