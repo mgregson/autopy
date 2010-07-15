@@ -29,29 +29,11 @@ struct _MMRect {
 
 typedef struct _MMRect MMRect;
 
-H_INLINE MMPoint MMPointMake(size_t x, size_t y)
-{
-	MMPoint point;
-	point.x = x;
-	point.y = y;
-	return point;
-}
+MMPoint MMPointMake(size_t x, size_t y);
 
-H_INLINE MMSize MMSizeMake(size_t width, size_t height)
-{
-	MMSize size;
-	size.width = width;
-	size.height = height;
-	return size;
-}
+MMSize MMSizeMake(size_t width, size_t height);
 
-H_INLINE MMRect MMRectMake(size_t x, size_t y, size_t width, size_t height)
-{
-	MMRect rect;
-	rect.origin = MMPointMake(x, y);
-	rect.size = MMSizeMake(width, height);
-	return rect;
-}
+MMRect MMRectMake(size_t x, size_t y, size_t width, size_t height);
 
 #define MMPointZero MMPointMake(0, 0)
 

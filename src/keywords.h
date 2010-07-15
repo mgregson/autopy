@@ -24,16 +24,18 @@
 /* A complicated, portable model for declaring inline functions in
  * header files.
  * See http://www.greenend.org.uk/rjk/2003/03/inline.html. */
-#ifndef H_INLINE
-	#if (defined(__GNUC__) && __GNUC__) && \
-        (!defined(__GNUC_STDC_H_INLINE__) || !__GNUC_STDC_H_INLINE__)
-		#define H_INLINE extern INLINE /* GNU C89 inline */
-	#elif (defined(__GNUC_STDC_H_INLINE__) && __GNUC_STDC_H_INLINE__) || \
-	       defined(_C99_)
-		#define H_INLINE INLINE /* C99 inline */
-	#else
-		#define H_INLINE static INLINE /* Fallback */
-	#endif
-#endif /* H_INLINE */
+/* #ifndef H_INLINE */
+/* 	#if (defined(__GNUC__) && __GNUC__) && \ */
+/*         (!defined(__GNUC_STDC_H_INLINE__) || !__GNUC_STDC_H_INLINE__) */
+/* 		#define H_INLINE extern INLINE /\* GNU C89 inline *\/ */
+/* 	#elif (defined(__GNUC_STDC_H_INLINE__) && __GNUC_STDC_H_INLINE__) || \ */
+/* 	       defined(_C99_) */
+/* 		#define H_INLINE INLINE /\* C99 inline *\/ */
+/* 	#else */
+/* 		#define H_INLINE static INLINE /\* Fallback *\/ */
+/* 	#endif */
+/* #endif /\* H_INLINE *\/ */
+
+#define H_INLINE 
 
 #endif /* KEYWORDS_H */
