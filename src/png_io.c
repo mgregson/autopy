@@ -85,7 +85,15 @@ MMBitmapRef newMMBitmapFromPNG(const char *path, MMPNGReadError *err)
 
 	/* Convert PNG to bit depth of 8. */
 	if (color_type == PNG_COLOR_TYPE_GRAY && bit_depth < 8) {
+#ifdef PNG_LIBPNG_VER_SONUM
+#if PNG_LIBPNG_VER_SONUM  >= 14
 		png_set_expand_gray_1_2_4_to_8(png_ptr);
+#else
+		png_set_gray_1_2_4_to_8(png_ptr);
+#endif
+#else
+		png_set_gray_1_2_4_to_8(png_ptr);
+#endif
 	} else if (bit_depth == 16) {
 		png_set_strip_16(png_ptr);
 	}
